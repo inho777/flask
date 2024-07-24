@@ -21,24 +21,27 @@ jobs:
       with:
         python-version: "3.12"
 
-    - name: Install dependencies
+    - name: Install pipenv
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install flake8 pytest
+        pip install pipenv
+
+    - name: Install dependencies
+      run: |
+        pipenv install --dev
 
     - name: Lint with flake8
       run: |
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        pipenv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        pipenv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
     - name: Test with pytest
       run: |
-        pytest
+        pipenv run pytest
 
     - name: Start Streamlit app
       run: |
-        nohup streamlit run streamlit-app.py &>/dev/null &
+        pipenv run nohup streamlit run streamlit-app.py &>/dev/null &
         sleep 10  # Wait for Streamlit to start
 
     - name: Check Streamlit app is running
