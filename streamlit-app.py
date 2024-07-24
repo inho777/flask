@@ -347,14 +347,14 @@ def chat_response(user_input):
 
 for message in st.session_state.messages:
     if message["role"] == "assistant":
-        with st.chat_message("assistant", avatar="./icon/icon2.svg"):
+        with st.chat_message("assistant", avatar="./static/images/icon/icon2.svg"):
             st.markdown(message["content"])
     else:
         with st.chat_message("user", avatar="https://api.dicebear.com/9.x/adventurer-neutral/svg?seed=Peanut"):
             st.markdown(message["content"])
 
 if st.session_state.stage == 0 and not st.session_state.messages:
-    st.chat_message("assistant", avatar="./icon/icon2.svg").markdown("안녕하세요! 퀘이자 감정 문의 서비스입니다.  \n**어떤 브랜드의 제품**을 감정받고 싶으신가요?  \nex)구찌,디올,샤넬,루이비통,프라다,펜디 등")
+    st.chat_message("assistant", avatar="./static/images/icon2.svg").markdown("안녕하세요! 퀘이자 감정 문의 서비스입니다.  \n**어떤 브랜드의 제품**을 감정받고 싶으신가요?  \nex)구찌,디올,샤넬,루이비통,프라다,펜디 등")
     st.session_state.messages.append({"role":"assistant", "content": "안녕하세요! 퀘이자 감정 문의 서비스입니다.  \n**어떤 브랜드의 제품**을 감정받고 싶으신가요?  \nex)구찌,디올,샤넬,루이비통,프라다,펜디 등"})
 
 if prompt := st.chat_input("여기에 메시지를 입력하세요."):
@@ -364,7 +364,7 @@ if prompt := st.chat_input("여기에 메시지를 입력하세요."):
 
     response = chat_response(prompt)
     st.session_state.messages.append({"role": "assistant", "content": response})
-    with st.chat_message("assistant", avatar="./icon/icon2.svg"):
+    with st.chat_message("assistant", avatar="./static/images/icon2.svg"):
         st.markdown(response)
 
 if st.session_state.stage == 6:
@@ -377,5 +377,5 @@ if st.session_state.stage == 6:
                 st.image(image, caption='업로드된 이미지', use_column_width=True)
         st.session_state.user_info['images'] = uploaded_files
         info_summary = "  \n".join([f"**{key_name[key]}**: {value}" for key, value in st.session_state.user_info.items() if key != "images"])
-        st.chat_message("assistant", avatar="./icon/icon2.svg").markdown(f"입력하신 정보를 확인해주세요:  \n  \n{info_summary}  \n  \n모든 정보가 정확하다면 '**확인**'이라고 입력해주세요.  \n수정이 필요하다면 '**수정**'이라고 입력해주세요.")
+        st.chat_message("assistant", avatar="./static/images/icon2.svg").markdown(f"입력하신 정보를 확인해주세요:  \n  \n{info_summary}  \n  \n모든 정보가 정확하다면 '**확인**'이라고 입력해주세요.  \n수정이 필요하다면 '**수정**'이라고 입력해주세요.")
         st.session_state.stage = 7
