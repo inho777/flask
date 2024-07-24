@@ -4,6 +4,4 @@ from modules import modules
 def configure_routes(app):
     @app.route("/")
     def index():
-        hello = modules.hello()
-        content = modules.content()
-        return render_template("index.html", hello=hello, content=content)
+        return render_template("index.html")

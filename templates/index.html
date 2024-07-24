@@ -1,6 +1,18 @@
-{% extends "base.html" %}
-{% block title %} Flask App - Vercel {% endblock %}
-{% block body %}
-    <h1>{{hello}}</h1>
-    <p>{{content}}</p>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>퀘이자</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <style>
+      html, body{
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe style="border: none" src="http://localhost:8501/" width="100%" height="100%"></iframe>
+  </body>
+</html>
