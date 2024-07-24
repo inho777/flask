@@ -34,3 +34,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Start Streamlit app
+      run: |
+        streamlit run streamlit-app.py &
+        sleep 10  # Wait for Streamlit to start
