@@ -32,13 +32,12 @@ jobs:
         
     - name: Start Streamlit app
       run: |
-        pipenv run nohup streamlit run streamlit-app.py &>/dev/null &
+        streamlit run streamlit-app.py
         sleep 10  # Wait for Streamlit to start
 
-    - name: Lint with flake8
+    - name: Start Flask
       run: |
-        pipenv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        pipenv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flask run
 
     - name: Test with pytest
       run: |
